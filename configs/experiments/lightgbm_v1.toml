@@ -1,0 +1,32 @@
+# Frozen before the first real-data score. Date ranges are [start, end).
+name = "lightgbm_baseline_v1"
+data_start = "2023-12-18T00:00:00+01:00"
+data_end = "2025-11-01T00:00:00+01:00"
+cache_dir = "data/elia_benchmark_v1"
+output_dir = "artifacts/experiments/lightgbm_baseline_v1"
+train_start = "2024-01-01"
+train_end = "2024-12-30"
+fit_time = "2025-01-01T08:00:00Z"
+validation_start = "2025-01-01"
+validation_end = "2025-02-27"
+test_start = "2025-02-28"
+test_end = "2025-10-31"
+issue_clock = "11:00"
+timezone = "Europe/Brussels"
+target_policy = "next_local_calendar_day"
+context_window = "14D"
+safety_lag = "30min"
+baseline_lags = ["24h", "48h", "7D"]
+comparison_lags = ["48h", "7D"]
+include_last_value = true
+reference_model = "seasonal_persistence_48h"
+ranking_metric = "rmse"
+evaluation_subsets = ["all_intervals", "reference_point_daylight"]
+representative_days = ["2025-03-15", "2025-06-15", "2025-09-15"]
+
+[model]
+n_estimators = 100
+learning_rate = 0.05
+num_leaves = 15
+min_child_samples = 20
+random_state = 0

@@ -1,0 +1,45 @@
+# Frozen before Prompt 15 inference/results. All inherited fields are hash-pinned
+# and expanded into freeze.json before any timing or test inference.
+name = "tsfm_zero_shot_v1"
+parent_config = "configs/experiments/lightgbm_v1.toml"
+parent_sha256 = "b35880938d8bee5945e48e4e5edfb1e6f7cec1795bc44d7094b668d99d68aafb"
+snapshot_manifest = "artifacts/experiments/lightgbm_baseline_v1/snapshot.json"
+snapshot_sha256 = "98e0cd1f701a60a51f405d1bc6ff415952c9513c28a27fc38b75dca6cc3156e7"
+output_dir = "artifacts/experiments/tsfm_zero_shot_v1"
+models = ["seasonal_persistence_48h", "lightgbm", "chronos", "t0"]
+context_slots = 1344
+point_policy = "native P50"
+dtype = "float32"
+device = "cpu"
+torch_threads = 4
+seed = 0
+tie_atol_mw = 0.000000001
+timing_origin_dates = ["2025-01-15", "2025-01-16"]
+normal_plot_days = ["2025-03-15", "2025-06-15", "2025-09-15"]
+difficult_day_rule = "largest mean model daily RMSE"
+all_struggle_rule = "largest minimum model daily RMSE"
+win_example_rule = "largest second-best minus winning daily RMSE; sole wins only"
+context_selection = "14D primary approved in Prompt 12; no validation/context search"
+zero_shot = "pretrained weights; no Belgian fit, gradients, adaptation or checkpoint selection"
+
+# Inherited unchanged: 2024 training; Jan-Feb 2025 validation; test origins
+# [2025-02-28,2025-10-31), targets Mar-Oct; 11:00 Brussels; 30min lag;
+# next local day; issue-anchored 14D window; 48h reference; all-interval RMSE;
+# all/daylight populations; original 13 LightGBM features and seed-0 parameters.
+[chronos]
+checkpoint = "amazon/chronos-2"
+revision = "29ec3766d36d6f73f0696f85560a422f50e8498c"
+
+[t0]
+checkpoint = "theforecastingcompany/t0-gamma"
+revision = "fef67abad3eed4f227c7b536a6e8ee4e9ab1080d"
+adjustments = "all off"
+
+[packages]
+lightgbm = "4.7.0"
+chronos-forecasting = "2.3.2"
+tfc-t0 = "0.6.1"
+torch = "2.15.0+cpu"
+transformers = "5.23.0"
+numpy = "2.5.4"
+pandas = "3.1.1"

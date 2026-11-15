@@ -1,0 +1,5 @@
+extend = "../pyproject.toml"
+
+[lint]
+# Keep descriptive plot labels/readable narrative; format code cells normally.
+ignore = ["E501"]

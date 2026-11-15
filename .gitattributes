@@ -1,0 +1,5 @@
+# The packaged boundary's byte checksum must survive Windows/Linux checkouts.
+src/solarcast/data/weather/belgium.geojson text eol=lf
+tests/fixtures/weather/*.grib2 binary
+# Frozen experiment configuration hashes must also survive cross-platform checkout.
+configs/experiments/*.toml text eol=lf

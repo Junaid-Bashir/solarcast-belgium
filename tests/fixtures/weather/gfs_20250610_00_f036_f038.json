@@ -1,0 +1,117 @@
+{
+  "provider": "NOAA/NCEP",
+  "product": "gfs.pgrb2.0p25.operational",
+  "reference_time": "2025-06-10T00:00:00+00:00",
+  "source_version": "d2982f3f40f71f204f70088aaefc4ddc43f5dbb8732251b692c2a9402de73da0",
+  "note": "Real NOAA GFS cropped three-cell sample, retrieved 2026-11-14. Availability unknown. Values retain native units and radiation bounds.",
+  "data": [
+    {
+      "reference_time": "2025-06-10T00:00:00+00:00",
+      "valid_time": "2025-06-11T12:00:00+00:00",
+      "forecast_lead": "1 days 12:00:00",
+      "latitude": 50.5,
+      "longitude": 3.0,
+      "dswrf_start_hour": 30.0,
+      "dswrf_end_hour": 36.0,
+      "dswrf_average_w_m2": 679.84,
+      "cloud_percent": 5.0,
+      "temperature_2m_k": 295.34931640625
+    },
+    {
+      "reference_time": "2025-06-10T00:00:00+00:00",
+      "valid_time": "2025-06-11T12:00:00+00:00",
+      "forecast_lead": "1 days 12:00:00",
+      "latitude": 50.5,
+      "longitude": 4.5,
+      "dswrf_start_hour": 30.0,
+      "dswrf_end_hour": 36.0,
+      "dswrf_average_w_m2": 688.368,
+      "cloud_percent": 1.2000000000000002,
+      "temperature_2m_k": 293.24931640625
+    },
+    {
+      "reference_time": "2025-06-10T00:00:00+00:00",
+      "valid_time": "2025-06-11T12:00:00+00:00",
+      "forecast_lead": "1 days 12:00:00",
+      "latitude": 50.5,
+      "longitude": 5.5,
+      "dswrf_start_hour": 30.0,
+      "dswrf_end_hour": 36.0,
+      "dswrf_average_w_m2": 698.24,
+      "cloud_percent": 3.8000000000000003,
+      "temperature_2m_k": 293.04931640625
+    },
+    {
+      "reference_time": "2025-06-10T00:00:00+00:00",
+      "valid_time": "2025-06-11T13:00:00+00:00",
+      "forecast_lead": "1 days 13:00:00",
+      "latitude": 50.5,
+      "longitude": 3.0,
+      "dswrf_start_hour": 36.0,
+      "dswrf_end_hour": 37.0,
+      "dswrf_average_w_m2": 888.62,
+      "cloud_percent": 30.700000000000003,
+      "temperature_2m_k": 295.912109375
+    },
+    {
+      "reference_time": "2025-06-10T00:00:00+00:00",
+      "valid_time": "2025-06-11T13:00:00+00:00",
+      "forecast_lead": "1 days 13:00:00",
+      "latitude": 50.5,
+      "longitude": 4.5,
+      "dswrf_start_hour": 36.0,
+      "dswrf_end_hour": 37.0,
+      "dswrf_average_w_m2": 893.82,
+      "cloud_percent": 2.1,
+      "temperature_2m_k": 293.81210937500003
+    },
+    {
+      "reference_time": "2025-06-10T00:00:00+00:00",
+      "valid_time": "2025-06-11T13:00:00+00:00",
+      "forecast_lead": "1 days 13:00:00",
+      "latitude": 50.5,
+      "longitude": 5.5,
+      "dswrf_start_hour": 36.0,
+      "dswrf_end_hour": 37.0,
+      "dswrf_average_w_m2": 897.28,
+      "cloud_percent": 4.0,
+      "temperature_2m_k": 293.512109375
+    },
+    {
+      "reference_time": "2025-06-10T00:00:00+00:00",
+      "valid_time": "2025-06-11T14:00:00+00:00",
+      "forecast_lead": "1 days 14:00:00",
+      "latitude": 50.5,
+      "longitude": 3.0,
+      "dswrf_start_hour": 36.0,
+      "dswrf_end_hour": 38.0,
+      "dswrf_average_w_m2": 861.34,
+      "cloud_percent": 12.4,
+      "temperature_2m_k": 296.3
+    },
+    {
+      "reference_time": "2025-06-10T00:00:00+00:00",
+      "valid_time": "2025-06-11T14:00:00+00:00",
+      "forecast_lead": "1 days 14:00:00",
+      "latitude": 50.5,
+      "longitude": 4.5,
+      "dswrf_start_hour": 36.0,
+      "dswrf_end_hour": 38.0,
+      "dswrf_average_w_m2": 864.24,
+      "cloud_percent": 9.700000000000001,
+      "temperature_2m_k": 294.1
+    },
+    {
+      "reference_time": "2025-06-10T00:00:00+00:00",
+      "valid_time": "2025-06-11T14:00:00+00:00",
+      "forecast_lead": "1 days 14:00:00",
+      "latitude": 50.5,
+      "longitude": 5.5,
+      "dswrf_start_hour": 36.0,
+      "dswrf_end_hour": 38.0,
+      "dswrf_average_w_m2": 865.9200000000001,
+      "cloud_percent": 1.7000000000000002,
+      "temperature_2m_k": 293.8
+    }
+  ]
+}

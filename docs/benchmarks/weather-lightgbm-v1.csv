@@ -1,0 +1,6 @@
+rank,model_id,ranking_metric,subset,reference_model,mae_mw,rmse_mw,bias_mw,rmse_skill,n_scored,n_expected,forecast_availability,n_failed_origins
+1,lightgbm_history_radiation_cloud,rmse,all_intervals,seasonal_persistence_48h,337.05996521691236,624.1889843621201,4.054800850438421,0.39224081234767716,23520,23520,1.0,0
+2,t0,rmse,all_intervals,seasonal_persistence_48h,439.0267832257433,866.3308239963803,84.38348288907422,0.15647258919784246,23520,23520,1.0,0
+3,chronos,rmse,all_intervals,seasonal_persistence_48h,466.9755042277642,938.1343970205455,41.02357742946909,0.08655901765941276,23520,23520,1.0,0
+4,lightgbm,rmse,all_intervals,seasonal_persistence_48h,549.2297397965835,1026.8807838213097,-187.6944815079921,0.00014859821852697408,23520,23520,1.0,0
+5,seasonal_persistence_48h,rmse,all_intervals,seasonal_persistence_48h,511.42268545918364,1027.0333991547918,-0.7162344387755077,0.0,23520,23520,1.0,0

@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: >-
+  If you use SolarCast, cite this software using the project metadata below.
+  The project entity is listed without asserting individual authorship.
+title: SolarCast Belgium
+type: software
+version: 0.1.0
+license: Apache-2.0
+authors:
+  - name: SolarCast Belgium
+# Minimal project-entity attribution; no individual identity, DOI or affiliation is inferred.

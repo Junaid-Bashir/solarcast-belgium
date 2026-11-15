@@ -1,0 +1,8 @@
+# Optional, development-only notebook tools; not SolarCast runtime dependencies.
+# Install in an existing project environment: python -m pip install -r notebooks/requirements.txt
+jupyterlab>=4,<5
+ipykernel>=6,<8
+nbclient>=0.10,<1
+nbformat>=5,<6
+plotly>=6,<7
+ipywidgets>=8,<9

@@ -1,0 +1,54 @@
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+.tox/
+.nox/
+
+# Packaging
+/build/
+/dist/
+*.egg
+
+# Machine-local configuration and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local data, downloaded weights and generated experiments (root only)
+/data/
+/artifacts/
+/model_weights/
+/checkpoints/
+/runs/
+/logs/
+/cache/
+/tmp/
+/temp/
+.ipynb_checkpoints/
+*.log
+*.tmp
+*.bak
+
+# Local contributor automation and one-time release working records
+/AGENTS.md
+/docs/public-api-implementation-report.md
+/docs/release/preparation-report.md
+/docs/release/release-candidate-audit.md
+/docs/release/github-v0.1-checklist.md
+/docs/release/public-candidate-files.txt

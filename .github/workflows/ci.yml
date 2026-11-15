@@ -1,0 +1,86 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    name: ${{ matrix.os }} / Python ${{ matrix.python }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            python: "3.11"
+          - os: windows-latest
+            python: "3.12"
+          - os: ubuntu-latest
+            python: "3.13"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+          cache-dependency-path: pyproject.toml
+      - name: Install package and development tools
+        run: python -m pip install -e ".[dev]"
+      - name: Lint
+        run: python -m ruff check .
+      - name: Check formatting
+        run: python -m ruff format --check .
+      - name: Type check
+        run: python -m mypy
+      - name: Test installed package
+        run: python -m pytest
+      - name: Run offline canonical quickstart
+        run: python examples/quickstart.py
+      - name: Check local documentation links
+        run: python scripts/check_docs.py
+      - name: Build distributions
+        run: python -m build
+      - name: Inspect distribution contents
+        run: python scripts/check_distributions.py
+      - name: Test clean base-only wheel
+        if: matrix.python == '3.11'
+        run: python scripts/check_wheel.py
+
+  lightgbm:
+    name: Optional LightGBM / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: pyproject.toml
+      - run: python -m pip install -e ".[dev,lightgbm]"
+      - run: python -m pytest tests/test_lightgbm_data.py tests/test_lightgbm.py tests/test_lightgbm_weather.py
+      - run: python -m mypy
+      - run: python examples/benchmark_lightgbm.py
+
+  weather:
+    name: Optional weather offline / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: pyproject.toml
+      - run: python -m pip install -e ".[dev,weather]"
+      - run: python -m pytest tests/test_weather.py tests/test_weather_gfs.py tests/test_weather_precision.py tests/test_weather_experiment.py tests/test_weather_benchmark.py

@@ -1,0 +1,22 @@
+{
+  "classification": "development; original 2025 results already known; not independent confirmation",
+  "source_report": "docs/experiments/weather-lightgbm-v1.md",
+  "source_experiment": "weather_lightgbm_v1",
+  "source_leaderboard": "extended_leaderboard.csv",
+  "source_leaderboard_sha256": "c20ecd59a8ca11eeeca75347c3b122c80c90080d9b2054c290e2ca56fbda8bcd",
+  "results_manifest_sha256": "c255bf5a3b16408b7cc7dd4c8a92b92363d83d11a4be1fda5ada45f7f90b4b6f",
+  "inference_identity": "6dceac4a33d87ae56c32c1276bbc8dcaa349ebe9e20937704b739e48fb462468",
+  "verified_date": "2026-11-15",
+  "verified_manifest_entries": 75,
+  "targets": "2025-03-01 through 2025-10-31 Europe/Brussels",
+  "issue_clock": "11:00 Europe/Brussels",
+  "origins": 245,
+  "quarters_per_model": 23520,
+  "scoring": "all intervals including night; common finite issue/target pairs; raw outputs",
+  "availability_assumptions": {
+    "pv": "event-time completion plus 30min",
+    "gfs": "initialization plus 6h; archive as-of fidelity unverified"
+  },
+  "inputs": "Elia national PV; operational GFS radiation/cloud only for weather model",
+  "raw_input_bundles_distributed": false
+}
