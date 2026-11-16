@@ -5,6 +5,8 @@ Compare forecasting models on a shared energy-data backtest, starting with
 
 **Same data. Same horizon. Same backtest. Let the results decide.**
 
+[**Documentation**](https://junaid-bashir.github.io/solarcast-belgium/)
+
 [Install and run the offline quickstart](#quick-start) · [Public API guide](https://github.com/Junaid-Bashir/solarcast-belgium/blob/main/docs/public-api.md)
 
 ```python

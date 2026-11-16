@@ -27,6 +27,7 @@ Normal CI is offline; real-weight tests need explicit opt-in. Keep datasets, wei
 python -m pip install -r docs/requirements.txt
 python -m mkdocs serve
 python -m mkdocs build --strict
+python scripts/check_docs_site.py
 ```
 
 Open the URL printed by MkDocs. Existing Markdown stays in place; reference pages are generated from source. Main deploys through the separate Pages workflow; pull requests build only. Package publishing is a separate owner-authorized process.

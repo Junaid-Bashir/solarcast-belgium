@@ -119,6 +119,7 @@ Install documentation tools separately from runtime dependencies:
 python -m pip install -r docs/requirements.txt
 python -m mkdocs serve
 python -m mkdocs build --strict
+python scripts/check_docs_site.py
 ```
 
 See [documentation development](docs/contributing/development.md) for the Pages workflow.

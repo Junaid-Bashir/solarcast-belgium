@@ -24,7 +24,7 @@ classifiers = [
 
 [project.urls]
 Repository = "https://github.com/Junaid-Bashir/solarcast-belgium"
-Documentation = "https://github.com/Junaid-Bashir/solarcast-belgium/blob/main/docs/README.md"
+Documentation = "https://junaid-bashir.github.io/solarcast-belgium/"
 Issues = "https://github.com/Junaid-Bashir/solarcast-belgium/issues"
 
 [project.optional-dependencies]
