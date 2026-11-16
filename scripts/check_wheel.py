@@ -45,6 +45,12 @@ from pathlib import Path
 import runpy, socket, sys
 import solarcast
 assert Path(solarcast.__file__).resolve().is_relative_to(Path(sys.prefix).resolve())
+assert solarcast.__version__ == md.version('solarcast-belgium') == '0.1.0'
+assert set(solarcast.__all__) == {{
+    '__version__', 'benchmark', 'available_models', 'BenchmarkConfig',
+    'BenchmarkResult', 'ModelInfo',
+}}
+assert callable(solarcast.benchmark) and callable(solarcast.available_models)
 for name in ('lightgbm','tfc-t0','chronos-forecasting','eccodes','pyarrow','shapely','pyproj'):
     try: md.version(name)
     except md.PackageNotFoundError: pass

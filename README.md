@@ -5,7 +5,7 @@ Compare forecasting models on a shared energy-data backtest, starting with
 
 **Same data. Same horizon. Same backtest. Let the results decide.**
 
-[Install and run the offline quickstart](#quick-start) · [Public API guide](docs/public-api.md)
+[Install and run the offline quickstart](#quick-start) · [Public API guide](https://github.com/Junaid-Bashir/solarcast-belgium/blob/main/docs/public-api.md)
 
 ```python
 import pandas as pd
@@ -40,6 +40,7 @@ information availability and metrics differ. SolarCast provides a common framewo
 
 ## Quick start
 
+The distribution name is **`solarcast-belgium`**; the Python import is **`solarcast`**.
 Python **3.11–3.13**. Clone the repository, then create an environment:
 
 ```shell
@@ -56,7 +57,7 @@ The canonical quickstart is offline, uses base dependencies and prints a synthet
 leaderboard. No credentials, weights or GFS preparation are needed. If activation
 is unavailable, use `.venv/Scripts/python.exe` (Windows) or `.venv/bin/python`.
 **PyPI: not published.** Install from this repository or a local source distribution.
-See [installation and examples](examples/README.md).
+See [installation and examples](https://github.com/Junaid-Bashir/solarcast-belgium/blob/main/examples/README.md).
 
 For real data, supply aware quarter-hour `target_time` interval starts and nullable
 numeric `pv_generation_mw`, with enough history and scoring actuals. The issue
@@ -77,7 +78,7 @@ schedule and observation safety lag are explicit. `benchmark()` never fetches PV
 `available_models()` reports dependency availability without loading ML runtimes.
 TSFM weights are local-only by default in the public API; downloads require opt-in.
 Weather LightGBM requires a prepared local WeatherStore, with no history-only fallback.
-See [public API](docs/public-api.md) for explicit training and weather prerequisites.
+See [public API](https://github.com/Junaid-Bashir/solarcast-belgium/blob/main/docs/public-api.md) for explicit training and weather prerequisites.
 
 ## Development benchmark
 
@@ -98,7 +99,7 @@ Elia national Belgian PV, day-ahead at 15-minute resolution, **March–October 2
 | 48h persistence | 1,027.03 |
 <!-- benchmark-table:end -->
 
-![Belgian PV development benchmark: RMSE in MW, lower is better, March–October 2025](docs/assets/development-benchmark.svg)
+![Belgian PV development benchmark: RMSE in MW, lower is better, March–October 2025](https://raw.githubusercontent.com/Junaid-Bashir/solarcast-belgium/main/docs/assets/development-benchmark.svg)
 
 All five models have 100% forecast availability and zero failed test origins.
 Outputs are raw: no clipping or nighttime removal. Weather-LightGBM receives
@@ -108,9 +109,9 @@ initialization plus six hours are **availability assumptions**, not certified
 historical as-of evidence. Revisions and TSFM pretraining overlap remain unresolved.
 
 Values come from the hash-authenticated frozen extended leaderboard, with no new
-fitting or inference. See the [full experiment report](docs/experiments/weather-lightgbm-v1.md),
-[public aggregate snapshot](docs/benchmarks/README.md), and
-[reproducibility limits](docs/reproducibility.md). Exact replay currently requires
+fitting or inference. See the [full experiment report](https://github.com/Junaid-Bashir/solarcast-belgium/blob/main/docs/experiments/weather-lightgbm-v1.md),
+[public aggregate snapshot](https://github.com/Junaid-Bashir/solarcast-belgium/blob/main/docs/benchmarks/README.md), and
+[reproducibility limits](https://github.com/Junaid-Bashir/solarcast-belgium/blob/main/docs/reproducibility.md). Exact replay currently requires
 local immutable artifacts that are **not distributed with this repository**.
 
 ## Methodology and data
@@ -123,21 +124,21 @@ Issue T -> select history/NWP eligible under the declared policy -> model
 LightGBM reconstructs historical training features/vintages before joining
 fit-time-eligible labels. Failed origins remain visible. Seasonal lags use exact
 elapsed UTC durations; next-day targets follow Brussels calendar boundaries.
-Read [backtesting](docs/backtesting.md) and [evaluation](docs/evaluation.md).
+Read [backtesting](https://github.com/Junaid-Bashir/solarcast-belgium/blob/main/docs/backtesting.md) and [evaluation](https://github.com/Junaid-Bashir/solarcast-belgium/blob/main/docs/evaluation.md).
 
-- **PV:** [Elia national estimates](docs/data/elia.md), with source/schema provenance
+- **PV:** [Elia national estimates](https://github.com/Junaid-Bashir/solarcast-belgium/blob/main/docs/data/elia.md), with source/schema provenance
   and unresolved historical publication/revision and live-license confirmation.
-- **NWP:** [NOAA/NCEP operational GFS 0.25°](docs/data/weather.md) forecast vintages;
+- **NWP:** [NOAA/NCEP operational GFS 0.25°](https://github.com/Junaid-Bashir/solarcast-belgium/blob/main/docs/data/weather.md) forecast vintages;
   future observed weather and reanalysis are never substituted.
 
 Large datasets, GFS caches, trained models, weights and prediction caches are not
 redistributed. Small documented fixtures and aggregate metrics are intentional
-exceptions, with [separate third-party terms](THIRD_PARTY.md).
+exceptions, with [separate third-party terms](https://github.com/Junaid-Bashir/solarcast-belgium/blob/main/THIRD_PARTY.md).
 
 ## Documentation and extras
 
-Start at the [documentation index](docs/README.md), [public API](docs/public-api.md)
-or [example catalog](examples/README.md). The [research notebook](notebooks/README.md)
+Start at the [documentation index](https://github.com/Junaid-Bashir/solarcast-belgium/blob/main/docs/README.md), [public API](https://github.com/Junaid-Bashir/solarcast-belgium/blob/main/docs/public-api.md)
+or [example catalog](https://github.com/Junaid-Bashir/solarcast-belgium/blob/main/examples/README.md). The [research notebook](https://github.com/Junaid-Bashir/solarcast-belgium/blob/main/notebooks/README.md)
 is clean source requiring separate local artifacts, not the beginner quickstart.
 
 Install only what you need, for example `python -m pip install -e ".[lightgbm]"`.
@@ -151,7 +152,7 @@ Install only what you need, for example `python -m pip install -e ".[lightgbm]"`
 | `experiments` | LightGBM and matplotlib research tooling |
 | `dev` | Tests, linting, typing and package builds |
 
-Notebook tools have separate [development requirements](notebooks/requirements.txt).
+Notebook tools have separate [development requirements](https://github.com/Junaid-Bashir/solarcast-belgium/blob/main/notebooks/requirements.txt).
 Installing an extra does not download checkpoints.
 
 ## Project status and contributing
@@ -160,14 +161,14 @@ Installing an extra does not download checkpoints.
 before 1.0; PyPI publication comes later. Operational `forecast()`, automatic best-model
 selection, ensembles and probabilistic evaluation are not implemented.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md), [SECURITY.md](SECURITY.md),
-[CHANGELOG.md](CHANGELOG.md), [roadmap](docs/roadmap.md) and the
-[release process](docs/release/README.md).
+See [CONTRIBUTING.md](https://github.com/Junaid-Bashir/solarcast-belgium/blob/main/CONTRIBUTING.md), [SECURITY.md](https://github.com/Junaid-Bashir/solarcast-belgium/blob/main/SECURITY.md),
+[CHANGELOG.md](https://github.com/Junaid-Bashir/solarcast-belgium/blob/main/CHANGELOG.md), [roadmap](https://github.com/Junaid-Bashir/solarcast-belgium/blob/main/docs/roadmap.md) and the
+[release process](https://github.com/Junaid-Bashir/solarcast-belgium/blob/main/docs/release/README.md).
 No production or operational accuracy guarantee is made.
 
 ## Citation and license
 
-[CITATION.cff](CITATION.cff) contains minimal project-entity attribution; individual
+[CITATION.cff](https://github.com/Junaid-Bashir/solarcast-belgium/blob/main/CITATION.cff) contains minimal project-entity attribution; individual
 authorship is intentionally not invented. No DOI is claimed.
-Software is [Apache-2.0](LICENSE); external data, weights and fixtures retain their
-[own provenance and terms](THIRD_PARTY.md).
+Software is [Apache-2.0](https://github.com/Junaid-Bashir/solarcast-belgium/blob/main/LICENSE); external data, weights and fixtures retain their
+[own provenance and terms](https://github.com/Junaid-Bashir/solarcast-belgium/blob/main/THIRD_PARTY.md).

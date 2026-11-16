@@ -5,11 +5,12 @@ build-backend = "hatchling.build"
 [project]
 name = "solarcast-belgium"
 version = "0.1.0"
-description = "A framework for Belgian aggregated solar PV forecasting and benchmarking."
+description = "Python toolkit for benchmarking energy forecasting models, starting with Belgian day-ahead solar PV."
 readme = "README.md"
 requires-python = ">=3.11,<3.14"
 license = "Apache-2.0"
 license-files = ["LICENSE", "THIRD_PARTY.md"]
+keywords = ["energy forecasting", "time series", "solar", "photovoltaic", "machine learning", "foundation models", "Belgium", "Elia"]
 dependencies = ["httpx>=0.28,<1", "pandas>=2.2,<4", "tzdata>=2025.1", "numpy>=1.26,<3", "pvlib>=0.13,<0.17"]
 classifiers = [
     "Development Status :: 3 - Alpha",

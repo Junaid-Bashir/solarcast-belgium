@@ -4,6 +4,9 @@ This guide is for maintainers preparing a version of SolarCast. Building a packa
 running checks or preparing files does not authorize publication. GitHub repository
 updates, release tags and PyPI uploads are separate decisions requiring owner approval.
 
+See [Python package validation and publishing](python-packages.md) for TestPyPI,
+isolated registry installation, the proposed OIDC workflow and draft release notes.
+
 ## Prepare and verify
 
 1. Review the changes, supported Python versions, dependency bounds, version,
