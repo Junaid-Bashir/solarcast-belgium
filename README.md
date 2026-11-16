@@ -41,23 +41,21 @@ information availability and metrics differ. SolarCast provides a common framewo
 ## Quick start
 
 The distribution name is **`solarcast-belgium`**; the Python import is **`solarcast`**.
-Python **3.11–3.13**. Clone the repository, then create an environment:
+Python **3.11–3.13**. Install from PyPI in a new environment:
 
 ```shell
-git clone https://github.com/Junaid-Bashir/solarcast-belgium.git
-cd solarcast-belgium
 python -m venv .venv
 # Windows PowerShell: .\.venv\Scripts\Activate.ps1
 # Linux/macOS: source .venv/bin/activate
-python -m pip install -e .
-python examples/quickstart.py
+python -m pip install solarcast-belgium
 ```
 
-The canonical quickstart is offline, uses base dependencies and prints a synthetic
-leaderboard. No credentials, weights or GFS preparation are needed. If activation
+Run the Python example above for an offline synthetic leaderboard using only base
+dependencies. No credentials, weights or GFS preparation are needed. If activation
 is unavailable, use `.venv/Scripts/python.exe` (Windows) or `.venv/bin/python`.
-**PyPI: not published.** Install from this repository or a local source distribution.
-See [installation and examples](https://github.com/Junaid-Bashir/solarcast-belgium/blob/main/examples/README.md).
+The [PyPI package](https://pypi.org/project/solarcast-belgium/) is available as
+`solarcast-belgium`; use `import solarcast` in Python. For source-checkout workflows,
+see [installation and examples](https://github.com/Junaid-Bashir/solarcast-belgium/blob/main/examples/README.md).
 
 For real data, supply aware quarter-hour `target_time` interval starts and nullable
 numeric `pv_generation_mw`, with enough history and scoring actuals. The issue
@@ -157,8 +155,7 @@ Installing an extra does not download checkpoints.
 
 ## Project status and contributing
 
-**Active development / research software: 0.1.0, unreleased.** The API may evolve
-before 1.0; PyPI publication comes later. Operational `forecast()`, automatic best-model
+**Active development / research software: 0.1.0.** The API may evolve before 1.0. Operational `forecast()`, automatic best-model
 selection, ensembles and probabilistic evaluation are not implemented.
 
 See [CONTRIBUTING.md](https://github.com/Junaid-Bashir/solarcast-belgium/blob/main/CONTRIBUTING.md), [SECURITY.md](https://github.com/Junaid-Bashir/solarcast-belgium/blob/main/SECURITY.md),

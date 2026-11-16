@@ -1,10 +1,10 @@
 # Python package validation and publishing
 
 SolarCast is distributed as **solarcast-belgium** and imported as **solarcast**.
-The intended first version is **0.1.0**, with the eventual tag **v0.1.0**.
-It remains active-development research software. Until an approved production
-upload succeeds, install from the repository; `pip install solarcast-belgium`
-is the intended future registry command, not a claim of current availability.
+Version **0.1.0** is published on [PyPI](https://pypi.org/project/solarcast-belgium/)
+and tagged **v0.1.0** on GitHub. Install with `python -m pip install solarcast-belgium`.
+It remains active-development research software. Future releases require their own
+review, registry validation and explicit publication approval.
 
 ## Validate a candidate
 

@@ -30,7 +30,8 @@ The `lightgbm` extra adds `lightgbm>=4.6,<5`; base installs do not require it.
 The adapter uses the [native Dataset/train/Booster API](https://lightgbm.readthedocs.io/en/stable/pythonapi/lightgbm.train.html),
 so no scikit-learn dependency is added. Importing its configuration/module does
 not import LightGBM; missing support raises an installation hint at fit time.
-The project is not published to PyPI; use the editable local installation.
+For the released package, use `python -m pip install "solarcast-belgium[lightgbm]"`.
+The editable installation above is for source development.
 
 ```python
 from solarcast.backtesting import BacktestSpec, EventTimeCutoff, backtest

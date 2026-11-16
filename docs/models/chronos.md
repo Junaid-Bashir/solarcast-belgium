@@ -35,7 +35,8 @@ From this repository, install:
 python -m pip install -e ".[chronos]"
 ```
 
-For development tests use `".[dev,chronos]"`. The package is not published to PyPI.
+For the released package, use `python -m pip install "solarcast-belgium[chronos]"`.
+For source development tests use `".[dev,chronos]"`.
 The extra adds **`chronos-forecasting>=2.3.2,<2.4`**, a reviewed minor-series range
 allowing compatible patch releases. Its heavy framework requirements stay optional.
 Use a separate virtual environment if preserving a working baseline environment.
