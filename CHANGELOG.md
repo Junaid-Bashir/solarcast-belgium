@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.0 — Unreleased
+## 0.1.0 — 2026-11-16
 
 - Add normalized historical Elia national PV ingestion, source provenance and
   non-destructive schema/time/DST validation.

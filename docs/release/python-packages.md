@@ -88,8 +88,8 @@ and compare the workflow artifact before approving its publishing job. An unexpe
 hash difference is a stop condition; do not dismiss it as a platform detail without
 checking source bytes and archive metadata. Successful TestPyPI uploads are immutable.
 
-Do not grant this workflow a production publisher binding. A production workflow
-below is only a design example and is not activated by the TestPyPI workflow.
+Do not grant this TestPyPI workflow a production publisher binding. Production
+publishing uses the separate release workflow and environment described below.
 
 Alternatively the owner can upload an approved local candidate from their own
 terminal using Twine's hidden password entry or an OS keyring. TestPyPI requires
@@ -142,62 +142,26 @@ reviewer, prevent self-review where supported, and restrict deployment to approv
 release tags. A pending publisher is not name ownership until its first successful
 upload. TestPyPI configuration is independent.
 
-The following is a **design example**, not an active workflow. After separate
-production approval, use `.github/workflows/publish-pypi.yml`, bind that exact
-filename in PyPI, and protect `v0.1.0`. Review the tag's commit and require its CI
-to pass before publishing the GitHub release. This first-release guard deliberately
-accepts only `v0.1.0`; update it deliberately for later versions. No push-to-main
-or pull-request event can publish through this design.
+The repository's [production release workflow](https://github.com/Junaid-Bashir/solarcast-belgium/blob/main/.github/workflows/publish-pypi.yml)
+is triggered only by a published, non-prerelease GitHub Release for `v0.1.0` in
+this repository. Bind `publish-pypi.yml` and the separate `pypi` environment in
+production PyPI. Restrict that environment to the `v0.1.0` tag and require owner
+review; a single owner must be allowed to approve their own initiated run.
 
-```yaml
-name: Publish approved Python release
-on:
-  release:
-    types: [published]
-permissions:
-  contents: read
-jobs:
-  build:
-    if: >-
-      github.repository == 'Junaid-Bashir/solarcast-belgium' &&
-      github.event.release.tag_name == 'v0.1.0' &&
-      !github.event.release.prerelease
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
-      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
-        with:
-          python-version: '3.12'
-      - run: python -m pip install -e ".[dev]" twine
-      - run: python -m ruff check .
-      - run: python -m ruff format --check .
-      - run: python -m mypy
-      - run: python -m pytest
-      - run: python scripts/check_docs.py
-      - run: python -m build
-      - run: python scripts/check_distributions.py
-      - run: python -m twine check dist/*
-      - run: python scripts/check_wheel.py
-      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
-        with:
-          name: python-distributions
-          path: dist/*
-          if-no-files-found: error
-  publish:
-    needs: build
-    runs-on: ubuntu-latest
-    environment: pypi
-    permissions:
-      id-token: write
-    steps:
-      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
-        with:
-          name: python-distributions
-          path: dist
-      - uses: pypa/gh-action-pypi-publish@7245906fb61fa33a13554f9d5fb856fe61758086 # v1.14.3
-```
+Before creating the annotated tag, require green CI for the exact release commit.
+The workflow checks out the release SHA and independently verifies that commit's
+successful main-branch CI. It builds, inspects, smoke-tests and hashes distributions
+once, then uploads them as `pypi-distributions`. The isolated publishing job consumes
+those same files and verifies their hashes again before OIDC publication to the
+fixed production endpoint `https://upload.pypi.org/legacy/`. Only this job receives
+`id-token: write`, behind the protected production environment.
+
+Review the built artifact hashes before approving deployment. The first-release
+guard deliberately accepts only `v0.1.0`; update it deliberately for later versions.
+No main push, pull request, arbitrary tag or other repository can publish through
+this workflow. Never move a published tag to include subsequent documentation
+updates. Update GitHub installation guidance in a separate commit only after the
+production upload and fresh registry installation have been verified.
 
 These official GitHub/PyPA actions are pinned to verified full commit IDs; review
 upstream changes before updating them. The normal CI matrix supplies broader
@@ -206,9 +170,9 @@ hashes for TestPyPI and production; document any rebuild/source changes and repe
 verification rather than claiming two different wheels are the same candidate.
 Do not store PyPI credentials as long-lived GitHub secrets when OIDC is available.
 
-## Draft first-release notes
+## First-release note guidance
 
-**SolarCast Belgium 0.1.0 — unreleased research software**
+**SolarCast Belgium 0.1.0 — research software**
 
 The first package release provides a common API for benchmarking energy forecasting
 models, beginning with day-ahead Belgian aggregated solar PV:
