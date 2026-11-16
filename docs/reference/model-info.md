@@ -1,0 +1,3 @@
+# ModelInfo
+
+::: solarcast.ModelInfo

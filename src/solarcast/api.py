@@ -106,6 +106,8 @@ class BenchmarkConfig:
         Existing adapter configurations. TSFM defaults prohibit weight downloads;
         explicitly set local_files_only=False to allow pinned Hub acquisition.
 
+    Notes
+    -----
     Invalid schedules/durations raise ValueError. No training or I/O occurs here.
     Example: ``BenchmarkConfig(issues, observation_safety_lag='30min')``.
     """
@@ -171,23 +173,43 @@ def benchmark(
 ) -> BenchmarkResult:
     """Run explicit local day-ahead benchmarks using existing adapters and scoring.
 
-    ``data`` must contain unique aware quarter-hour target_time and nullable real
-    pv_generation_mw (national Belgium, MW). Supply warm-up history, training
-    labels if needed, and evaluation actuals; missing values remain missing.
-    ``config`` declares schedule, cutoff assumptions and optional pre-test fit.
-    ``models`` contains identifiers from available_models(); no automatic winner
-    selection occurs. ``data_source`` is a caller assertion recorded in metadata.
-    ``weather`` must be a prepared local WeatherStore for the NWP adapter.
+    Parameters
+    ----------
+    data : pandas.DataFrame
+        Unique aware quarter-hour target_time and nullable real pv_generation_mw
+        (national Belgium, MW). Include warm-up history, any training labels and
+        evaluation actuals. Missing values remain missing.
+    config : BenchmarkConfig
+        Schedule, cutoff assumptions, scoring policy and optional pre-test fit.
+    models : Sequence[str]
+        Identifiers from available_models(); no automatic winner selection.
+    target : str
+        Only belgium_pv is implemented.
+    data_source : str
+        Caller provenance assertion recorded in metadata, not independently verified.
+    weather : WeatherStore or None
+        Prepared local historical NWP store, required only by the weather adapter.
 
-    Returns the existing BenchmarkResult, augmented with complete predictions,
-    origins, effective config and metadata. Leaderboards score raw predictions on
-    common finite issue/target pairs, with availability/failure accounting.
+    Returns
+    -------
+    BenchmarkResult
+        Complete predictions, origins, effective config and metadata. Leaderboards
+        score raw predictions on common finite pairs with failure accounting.
+
+    Raises
+    ------
+    ValueError
+        Invalid target, models, data or prerequisites.
+    ImportError
+        Missing optional model support.
+    BacktestOriginError
+        Strict origin failure, preserving the underlying cause.
+
+    Notes
+    -----
     Nothing is saved, PV/NWP is never fetched, and TSFM downloads require explicit
     opt-in via adapter config. LightGBM is trained once when requested.
-
-    Raises ValueError for invalid targets/models/data/prerequisites; ImportError
-    for absent optional support. Strict origin failures retain their cause via
-    BacktestOriginError; continue mode records failures in results.origins.
+    Continue mode records origin failures in results.origins.
 
     Example: ``benchmark(data=pv_data, config=config).leaderboard()``.
     """

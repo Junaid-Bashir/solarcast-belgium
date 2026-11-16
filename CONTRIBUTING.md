@@ -110,3 +110,15 @@ provider datasets, prediction caches, trained models, source archives or checkpo
 Source contracts and detailed model-specific guards live in the linked data,
 feature, forecasting, backtesting, evaluation and model guides. Extend those
 contracts deliberately and document uncertainty rather than encoding it silently.
+
+## Documentation website
+
+Install documentation tools separately from runtime dependencies:
+
+```bash
+python -m pip install -r docs/requirements.txt
+python -m mkdocs serve
+python -m mkdocs build --strict
+```
+
+See [documentation development](docs/contributing/development.md) for the Pages workflow.

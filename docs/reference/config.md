@@ -1,0 +1,3 @@
+# BenchmarkConfig
+
+::: solarcast.BenchmarkConfig

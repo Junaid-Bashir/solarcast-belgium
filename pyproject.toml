@@ -39,7 +39,7 @@ dev = ["pytest>=8,<10", "ruff>=0.11,<1", "mypy>=1.15,<2", "build>=1.2,<2", "pand
 packages = ["src/solarcast"]
 
 [tool.hatch.build.targets.sdist]
-include = ["/.gitattributes", "/src", "/tests", "/docs", "/examples", "/scripts", "/configs", "/notebooks", "/README.md", "/CONTRIBUTING.md", "/CITATION.cff", "/CHANGELOG.md", "/SECURITY.md", "/THIRD_PARTY.md", "/LICENSE", "/pyproject.toml"]
+include = ["/mkdocs.yml", "/.gitattributes", "/src", "/tests", "/docs", "/examples", "/scripts", "/configs", "/notebooks", "/README.md", "/CONTRIBUTING.md", "/CITATION.cff", "/CHANGELOG.md", "/SECURITY.md", "/THIRD_PARTY.md", "/LICENSE", "/pyproject.toml"]
 exclude = ["/AGENTS.md", "/docs/public-api-implementation-report.md", "/docs/release/preparation-report.md", "/docs/release/release-candidate-audit.md", "/docs/release/github-v0.1-checklist.md", "/docs/release/public-candidate-files.txt"]
 
 [tool.pytest.ini_options]

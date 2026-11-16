@@ -4,6 +4,8 @@
 
 - [Project overview and offline quickstart](../README.md)
 - [Public benchmark API](public-api.md): inputs, configuration, discovery and results
+- [Minimal real-data notebook](../notebooks/00_real_data_quickstart.ipynb): PyPI install,
+  explicit Elia download, baseline leaderboard and interactive forecasts
 - [Example catalog](../examples/README.md): prerequisites, network and output behavior
 - [Reproducibility](reproducibility.md): new runs versus original frozen research runs
 

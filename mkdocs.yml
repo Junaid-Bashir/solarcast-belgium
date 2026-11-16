@@ -1,0 +1,114 @@
+site_name: SolarCast Belgium
+site_description: Benchmark energy forecasting models under common historical conditions.
+site_url: https://junaid-bashir.github.io/solarcast-belgium/
+repo_url: https://github.com/Junaid-Bashir/solarcast-belgium
+repo_name: Junaid-Bashir/solarcast-belgium
+edit_uri: edit/main/docs/
+docs_dir: docs
+site_dir: site
+hooks:
+  - scripts/docs_hooks.py
+exclude_docs: |
+  /README.md
+  /requirements.txt
+  /public-api-implementation-report.md
+  /release/preparation-report.md
+  /release/release-candidate-audit.md
+  /release/github-v0.1-checklist.md
+  /release/public-candidate-files.txt
+theme:
+  name: material
+  font: false
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+  palette:
+    - scheme: default
+      primary: teal
+      accent: amber
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: teal
+      accent: amber
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [src]
+          options:
+            docstring_style: numpy
+            show_signature_annotations: true
+            separate_signature: true
+            show_source: false
+            members_order: source
+            filters: ["!^_"]
+markdown_extensions:
+  - admonition
+  - tables
+  - attr_list
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - toc:
+      permalink: true
+validation:
+  links:
+    not_found: warn
+    anchors: warn
+nav:
+  - Home: index.md
+  - Getting Started:
+      - Installation: getting-started/installation.md
+      - Quickstart: getting-started/quickstart.md
+      - Your First Benchmark: getting-started/first-benchmark.md
+      - API Cheat Sheet: getting-started/cheat-sheet.md
+  - User Guide:
+      - Belgian PV Data: guide/belgian-pv.md
+      - Data Overview: data/README.md
+      - Features: features.md
+      - Forecasting Models: guide/models.md
+      - Backtesting: guide/backtesting.md
+      - Evaluation: guide/evaluation.md
+      - Weather / NWP: guide/weather.md
+      - Elia Source Contract: data/elia.md
+      - Weather Source Contract: data/weather.md
+  - Models:
+      - Persistence: baselines.md
+      - LightGBM: models/lightgbm.md
+      - Weather-LightGBM: models/weather-lightgbm.md
+      - t0: models/t0.md
+      - Chronos: models/chronos.md
+  - API Reference:
+      - Overview: reference/index.md
+      - benchmark(): reference/benchmark.md
+      - BenchmarkConfig: reference/config.md
+      - BenchmarkResult: reference/result.md
+      - available_models(): reference/discovery.md
+      - ModelInfo: reference/model-info.md
+      - Advanced Interface: forecasting-interface.md
+      - Public API Guide: public-api.md
+  - Research:
+      - Development Benchmark: research/development-benchmark.md
+      - LightGBM Experiment: experiments/lightgbm-baseline-v1.md
+      - TSFM Benchmark: experiments/tsfm-zero-shot-v1.md
+      - Weather Benchmark: experiments/weather-lightgbm-v1.md
+      - Methodology: backtesting.md
+      - Evaluation Contract: evaluation.md
+      - Reproducibility: reproducibility.md
+      - Limitations: research/limitations.md
+      - Benchmark Provenance: benchmarks/README.md
+      - TSFM Landscape: models/tsfm-landscape.md
+  - Contributing:
+      - Development Setup: contributing/development.md
+      - Adding a Forecaster: contributing/forecaster.md
+      - Architecture: architecture.md
+      - Roadmap: roadmap.md
+      - Release / Maintenance: release/README.md
+      - Python Packages: release/python-packages.md

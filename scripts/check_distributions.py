@@ -26,6 +26,7 @@ def inspect(entries: list[tuple[str, bytes]], *, sdist: bool) -> None:
         "THIRD_PARTY.md",
         "LICENSE",
         "pyproject.toml",
+        "mkdocs.yml",
         "PKG-INFO",
     }
     fixtures = {f"tests/fixtures/weather/constant_{v}.grib2" for v in ("DSWRF", "TCDC", "TMP")}
@@ -64,7 +65,10 @@ def inspect(entries: list[tuple[str, bytes]], *, sdist: bool) -> None:
             ".pyc",
         }, name
         if path.suffix == ".ipynb":
-            assert sdist and name == "notebooks/01_real_belgian_forecast_analysis.ipynb", name
+            assert sdist and name in {
+                "notebooks/00_real_data_quickstart.ipynb",
+                "notebooks/01_real_belgian_forecast_analysis.ipynb",
+            }, name
             notebook = json.loads(content)
             assert not any(cell.get("outputs") for cell in notebook["cells"]), name
             assert not any(cell.get("execution_count") is not None for cell in notebook["cells"]), (

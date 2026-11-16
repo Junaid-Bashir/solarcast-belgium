@@ -1,4 +1,28 @@
-# Interactive real Belgian PV forecast analysis
+# Real-data notebooks
+
+## Start here: minimal PyPI quickstart
+
+Open [00_real_data_quickstart.ipynb](00_real_data_quickstart.ipynb) in JupyterLab,
+VS Code or another Jupyter environment. Run its five code cells in order. It installs
+`solarcast-belgium==0.1.0` from PyPI, explicitly fetches a small real Elia national PV
+snapshot, compares three persistence baselines and displays an interactive Plotly
+forecast/actual chart. No checkout, frozen research bundles, weights or weather stack
+are needed. The notebook can be downloaded and used on its own.
+
+To launch locally from a new environment:
+
+```shell
+python -m pip install jupyterlab
+python -m jupyterlab notebooks/00_real_data_quickstart.ipynb
+```
+
+The fixed June 2026 dates are an illustrative three-origin example, not a new
+confirmatory study. Retrospective revisions and the explicit 30-minute observation
+availability approximation remain limitations. Data are downloaded only when the
+fetch cell is executed, stay in memory and are not bundled in the source notebook.
+The 7-day baseline needs preceding history; keep that warm-up when editing dates.
+
+## Existing five-model research analysis
 
 Open `01_real_belgian_forecast_analysis.ipynb`. The source notebook is clean and
 self-contained; a fully executed copy and all derived outputs are kept separately

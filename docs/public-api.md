@@ -119,8 +119,10 @@ python -m pip install -e ".[chronos]"         # independent Chronos support
 python -m pip install -e ".[lightgbm,weather]" # optional native NWP preparation tools
 ```
 
-No distribution has been published. Local wheel installations can use the same
-extras on the wheel path. Base imports and persistence do not require weather or
+The released package is available with `python -m pip install solarcast-belgium`.
+For example, `python -m pip install "solarcast-belgium[lightgbm]"` adds optional
+LightGBM support. Local wheel installations can use the same extras on the wheel
+path. Base imports and persistence do not require weather or
 TSFM extras. Missing optional distributions cause an actionable ImportError before
 running any model. Unknown model/target/prerequisite mistakes raise ValueError.
 
